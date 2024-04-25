@@ -1,11 +1,9 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>臺中地區2024年3月23日-露天燃燒空氣汙染pm2.5地圖</title>
+    <title>Taiwan Taichung Area March 23, 2024 - Biomass Burning PM2.5 Map</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {
@@ -27,14 +25,8 @@
         .title {
             color: #2b8a3e;
             text-align: center;
-            margin: 20px 0;
+            margin: 10px 0;
         }        
-        .header {
-            background-color: #006600;
-            color: #ffffff;
-            padding: 20px;
-            text-align: center;
-        }
         .footer {
             text-align: center;
             margin-top: 40px;
@@ -67,7 +59,7 @@
     <div class="wrapper">
         <div class="title" style="display: flex; justify-content: center;">
             <div style="display: flex; align-items: center;">
-                <h1>臺中地區2024年3月23日-露天燃燒空氣汙染pm2.5地圖 </h1>
+                <h2>Taichung Area March 23, 2024 - Biomass Burning PM2.5 Map</h2>
                 <div id="box" style="border: 1px solid black; margin-left: 20px;">
                     <div id="qrcode"/></div>
                 </div>
@@ -91,7 +83,7 @@
 
             // Map Plot
             var frames = [], sliderSteps = [];
-            for (var hour = 9; hour <= 19; hour++) {
+            for (var hour = 8; hour <= 19; hour++) {
                 var frameName = `hour${hour}`,
                     frameData = rows.filter(function(row) { return row.hour == hour; }),
                     data = [{
@@ -114,6 +106,14 @@
                 });
             }
             var mapLayout = {
+                title: 'PM2.5 > 54(μg/m3)',
+                font: {
+                    family: 'Droid Serif, serif',
+                    size: 12
+                },
+                titlefont: {
+                    size: 14
+                },
                 autosize: true,
                 hovermode: 'closest',
                 mapbox: {style: 'open-street-map', center: {lat: 24.18, lon: 120.55}, zoom: 11},
@@ -160,7 +160,7 @@
                     name: `Device ${id}`
                 };
             });
-            var lineLayout = {title: 'PM2.5 Values Over Time by Device', xaxis: {title: 'Hour'}, yaxis: {title: 'PM2.5 Value'}};
+            var lineLayout = {title: 'PM2.5 Values Over Time by Device', titlefont: {size: 14}, xaxis: {title: 'Hour'}, yaxis: {title: 'PM2.5 Value'}};
 
             Plotly.newPlot('map', frames[0].data, mapLayout).then(function() {
                 Plotly.addFrames('map', frames);
