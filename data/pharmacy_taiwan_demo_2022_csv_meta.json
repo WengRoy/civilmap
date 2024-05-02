@@ -1,0 +1,30 @@
+{
+  "dataset_info": {
+    "title": "臺中市區的藥局地圖",
+    "description": "顯示臺中市各藥局的位置，包含醫療資源如口罩、成藥等的可獲取資訊。",
+    "data_source": "https://wengroy.github.io/civilmap/pharmacy_taiwan_demo_2022.csv",
+    "updated": "2022"
+  },
+  "fields": {
+    "縣市": {
+      "description": "藥局所在的縣市名稱",
+      "type": "string"
+    },
+    "鄉鎮市區": {
+      "description": "藥局所在的鄉鎮市區名稱",
+      "type": "string"
+    },
+    "lat": {
+      "description": "藥局的緯度座標",
+      "type": "float"
+    },
+    "lon": {
+      "description": "藥局的經度座標",
+      "type": "float"
+    },
+    "name": {
+      "description": "藥局的名稱",
+      "type": "string"
+    }
+  }
+}
