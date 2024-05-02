@@ -1,0 +1,32 @@
+{
+  "title": "Taiwan Taichung Area March 23, 2024 - Biomass Burning PM2.5 Map",
+  "data_source": "https://wengroy.github.io/civilmap/data/20240323_pm25_taichung_24hr_v3.csv",
+  "description": "Hourly PM2.5 data from various devices in Taichung area on March 23, 2024. from 8:00 to 19:00",
+  "created_date": "2024-03-23",
+  "fields": {
+    "hour": {
+      "description": "The hour of the day (24-hour format) when the measurement was taken.",
+      "type": "integer"
+    },
+    "lat": {
+      "description": "The latitude coordinate where the measurement was taken.",
+      "type": "float"
+    },
+    "lon": {
+      "description": "The longitude coordinate where the measurement was taken.",
+      "type": "float"
+    },
+    "value": {
+      "description": "The measured concentration value of PM2.5 in the air.",
+      "type": "float"
+    },
+    "deviceId": {
+      "description": "The identifier of the device that recorded the measurement.",
+      "type": "string"
+    },
+    "sensorId": {
+      "description": "The identifier of the specific sensor on the device that recorded the measurement.",
+      "type": "string"
+    }
+  }
+}
