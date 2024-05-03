@@ -1,0 +1,100 @@
+@begin code("./users/wengroy_cameo_tw/code/responsive_map.html")
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌄 1912年賴和的心靈之旅 🌄</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://source.unsplash.com/featured/?forest');
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        .header {
+            background-color: rgba(255, 140, 0, 0.6); /* Semi-transparent orange */
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+        .content {
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Add opacity to the background */
+        }
+        #map {
+            height: 80vh; /* Adjusted to be responsive with the viewport height */
+            width: 100%;
+        }
+        .leaflet-popup-content-wrapper {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        .leaflet-popup-tip-container {
+            display: none;
+        }
+        .custom-icon {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+</head>
+<body>
+<div class="header">
+    <h1>🌄 1912年賴和的心靈之旅 🌄</h1>
+</div>
+<div class="content">
+    <p>🚶‍♂️ 1912年，賴和與朋友杜聰明從臺北出發，徒步至彰化。途中，他們拜訪了多位在地行醫的前輩，獲得許多珍貴的經驗與洞見。</p>
+    <p>💡 此行不僅是對身體的挑戰，更是一場心靈的洗禮。他們藉由這段旅程，深刻體驗了臺灣豐富的文化與自然景觀，留下了無價的回憶。</p>
+    <div id="map"></div>
+</div>
+<script>
+    var map = L.map('map').setView([24.1477, 120.5412], 8);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+    }).addTo(map);
+
+    var locations = [
+        ["新店", 24.9575, 121.5370],
+        ["三峽", 24.9342, 121.3693],
+        ["大溪", 24.8839, 121.2868],
+        ["關西", 24.7899, 121.1823],
+        ["北埔", 24.698, 121.054],
+        ["南莊獅頭山", 24.5967, 121.0009],
+        ["頭份", 24.6879, 120.8986],
+        ["竹南", 24.6854, 120.8721],
+        ["通霄", 24.4894, 120.6762],
+        ["大甲", 24.3476, 120.6209],
+        ["梧棲", 24.2541, 120.5159],
+        ["大肚", 24.1477, 120.5412],
+        ["和美", 24.1113, 120.5044]
+    ];
+
+    var polylinePoints = [];
+
+    locations.forEach(function(location) {
+        var basicMarker = L.marker([location[1], location[2]]).addTo(map);
+        basicMarker.bindPopup(`<span style="color: black;">${location[0]}</span>`);
+
+        var customMarker = L.marker([location[1], location[2]], {
+            icon: L.divIcon({
+                className: 'custom-icon',
+                html: `<span style="background-color: rgba(255, 255, 255, 0.8); padding: 5px; border-radius: 5px; color: black;">${location[0]}</span>`,
+                iconSize: [100, 40],
+                iconAnchor: [50, 40],
+                popupAnchor: [0, -40],
+            })
+        }).addTo(map);
+
+        polylinePoints.push([location[1], location[2]]);
+    });
+
+    var polyline = L.polyline(polylinePoints, {color: 'red'}).addTo(map);
+</script>
+</body>
+</html>
+@end
+
+[Boosted by Botrun.ai]
